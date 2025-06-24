@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mom’s Comfort Corner</title>
+  <style>
+    body { font-family: Arial; background: #fff0f5; padding: 30px; }
+    h1 { color: #d63384; }
+    .chatbox {
+      background: #ffe6f0;
+      padding: 15px;
+      height: 400px;
+      overflow-y: scroll;
+      border: 1px solid #ff8bb1;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>👩 Your Comfort Mom</h1>
+  <p>I'm here when you need love, guidance, or just someone to listen 💗</p>
+
+  <div class="chatbox" id="chatbox"></div>
+  <input type="text" id="userInput" placeholder="Ask me something..." />
+  <button onclick="sendMessage()">Send</button>
+
+  <p><a href="index.html">← Back to Comfort Circle</a></p>
+
+  <script>
+    const chatbox = document.getElementById("chatbox");
+    const replies = [
+      "It's okay to rest, baby. You’ve been strong long enough.",
+      "You’re doing better than you think. Let yourself breathe.",
+      "Remember how far you’ve come — I see you, I’m proud.",
+      "No matter what you’re facing, you're not alone in it 💗",
+      "Instead of being hard on yourself, try being gentle. You deserve softness."
+    ];
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      chatbox.innerHTML += `<div><strong>You:</strong> ${msg}</div>`;
+      const reply = replies[Math.floor(Math.random() * replies.length)];
+      chatbox.innerHTML += `<div style="color:#d63384;"><strong>Mom:</strong> ${reply}</div>`;
+
+      input.value =
