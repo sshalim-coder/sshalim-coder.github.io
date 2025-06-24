@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sis Talks</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #ffe6f0; padding: 30px; }
+    h1 { color: #cc3399; }
+    .chatbox {
+      background: #fff0f5;
+      padding: 15px;
+      height: 400px;
+      overflow-y: scroll;
+      border: 1px solid #ffb3cc;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>👧 Big Sister Talk</h1>
+  <p>I’m your go-to girl when you need hype, advice, or a lil reality check 💅💬</p>
+
+  <div class="chatbox" id="chatbox"></div>
+  <input type="text" id="userInput" placeholder="Girl, what’s up?" />
+  <button onclick="sendMessage()">Send</button>
+
+  <p><a href="index.html">← Back to Comfort Circle</a></p>
+
+  <script>
+    const chatbox = document.getElementById("chatbox");
+    const replies = [
+      "Nope. We’re not doing that. You deserve better.",
+      "You’re not being dramatic. You’re being real.",
+      "Let’s get that crown straight — you forgot who you are for a sec 👑",
+      "Take a breath. Drink water. You’re okay, I promise.",
+      "We’re gonna get through this, together. Like always 💕"
+    ];
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      chatbox.innerHTML += `<div><strong>You:</strong> ${msg}</div>`;
+      const reply = replies[Math.floor(Math.random() * replies.length)];
+      chatbox.innerHTML += `<div style="color:#cc3399;"><strong>Sis:</strong> ${reply}</div>`;
+
+      input.value = "";
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
