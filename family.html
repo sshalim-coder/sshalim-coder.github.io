@@ -1,27 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Family Advice When You Need It</title>
+  <title>Family Chat Advice</title>
+  <style>
+    body { font-family: Arial; background-color: #f7f7f7; padding: 20px; }
+    #chatbox { background: #fff; padding: 20px; height: 400px; overflow-y: scroll; border: 1px solid #ccc; margin-bottom: 10px; }
+    .user { color: blue; }
+    .response { color: green; margin-bottom: 10px; }
+    input { padding: 10px; width: 80%; }
+    button { padding: 10px; }
+  </style>
 </head>
 <body>
-  <h1>💌 Family Words for When You Feel Alone</h1>
 
-  <p>Not everyone has a family to turn to. This page is for those moments when you just need a loving word — like from a mom, a dad, or a sibling.</p>
+  <h2>Chat with Someone Who Cares 💬</h2>
+  <div id="chatbox"></div>
 
-  <hr>
+  <input type="text" id="userInput" placeholder="Ask anything..." />
+  <button onclick="getResponse()">Send</button>
 
-  <h2>🧕 From a Mom:</h2>
-  <p>"Baby, I’m proud of you. I know life gets heavy, but look at you — you’re still here. Make sure you eat, okay? You need your strength. You are never too much, and you are always enough."</p>
+  <script>
+    function getResponse() {
+      const userInput = document.getElementById("userInput").value;
+      const chatbox = document.getElementById("chatbox");
 
-  <h2>👨‍🦳 From a Dad:</h2>
-  <p>"You don’t have to have it all figured out. You’re doing better than you think. Keep your head up — I believe in you. And I always will."</p>
+      // Add user message
+      chatbox.innerHTML += `<div class='user'><strong>You:</strong> ${userInput}</div>`;
 
-  <h2>👧 From a Big Sister:</h2>
-  <p>"Hey, don’t be so hard on yourself. Cry it out if you need to. Then fix your crown and keep going. I’m cheering for you even on your quiet days."</p>
+      // Simulated family responses
+      let responses = {
+        "sad": "Mom: I'm here sweetheart, everything is going to be okay 💕",
+        "alone": "Sis: You’re never alone. I got you 🫂",
+        "scared": "Dad: You’re strong. I believe in you. 💪",
+        "love": "Mom: You are loved more than you know ❤️",
+        "help": "Sis: I’m always just a message away if you need me.",
+      };
 
-  <h2>💬 Feeling Alone?</h2>
-  <p>You're not. Bookmark this page. Read it when you need love.</p>
+      let reply = "Family: I’m always here for you. Tell me more.";
+      for (let keyword in responses) {
+        if (userInput.toLowerCase().includes(keyword)) {
+          reply = responses[keyword];
+          break;
+        }
+      }
 
-  <p>← <a href="index.html">Back to Home</a></p>
+      // Show response
+      chatbox.innerHTML += `<div class='response'>${reply}</div>`;
+      document.getElementById("userInput").value = "";
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+  </script>
+
 </body>
 </html>
