@@ -1,99 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Family Chat Advice</title>
-  <style>
-    body { font-family: Arial; background-color: #f7f7f7; padding: 20px; }
-    #chatbox { background: #fff; padding: 20px; height: 400px; overflow-y: scroll; border: 1px solid #ccc; margin-bottom: 10px; }
-    .user { color: blue; }
-    .response { color: green; margin-bottom: 10px; }
-    input { padding: 10px; width: 80%; }
-    button { padding: 10px; }
-  </style>
-</head>
-<body>
-
-  <h2>Chat with Someone Who Cares 💬</h2>
-  <div id="chatbox"></div>
-
-  <input type="text" id="userInput" placeholder="Ask anything..." />
-  <button onclick="getResponse()">Send</button>
-
-  <script>
-    function getResponse() {
-      const userInput = document.getElementById("userInput").value;
-      const chatbox = document.getElementById("chatbox");
-
-      // Add user message
-      chatbox.innerHTML += `<div class='user'><strong>You:</strong> ${userInput}</div>`;
-
-      // Simulated family responses
-      let responses = {
-        "sad": "Mom: I'm here sweetheart, everything is going to be okay 💕",
-        "alone": "Sis: You’re never alone. I got you 🫂",
-        "scared": "Dad: You’re strong. I believe in you. 💪",
-        "love": "Mom: You are loved more than you know ❤️",
-        "help": "Sis: I’m always just a message away if you need me.",
-      };
-
-      let reply = "Family: I’m always here for you. Tell me more.";
-      for (let keyword in responses) {
-        if (userInput.toLowerCase().includes(keyword)) {
-          reply = responses[keyword];
-          break;
-        }
-      }
-
-      // Show response
-      chatbox.innerHTML += `<div class='response'>${reply}</div>`;
-      document.getElementById("userInput").value = "";
-      chatbox.scrollTop = chatbox.scrollHeight;
-    }
-  </script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Talk to Someone Who Cares</title>
+  <title>Family Advice Chat</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffe6f0;
       padding: 20px;
+      color: #333;
     }
     h1 {
       text-align: center;
+      color: #cc2e5d;
     }
     #chatbox {
-      background-color: #fff;
-      border: 1px solid #ccc;
+      background-color: #fff0f5;
+      border: 2px solid #ffb6c1;
       padding: 15px;
-      height: 400px;
+      height: 450px;
       overflow-y: scroll;
       margin-bottom: 10px;
+      border-radius: 10px;
     }
     .user {
-      color: #0000cc;
+      color: #7a3e66;
+      font-weight: bold;
     }
     .response {
       margin-top: 5px;
       margin-bottom: 15px;
+      color: #d63384;
     }
     select, input, button {
       padding: 10px;
-      margin-top: 5px;
       font-size: 16px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ff8bb1;
+    }
+    button {
+      background-color: #ffb6c1;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-<h1>🫂 Family Support Chat</h1>
+<h1>💞 Talk to Someone Who Cares</h1>
 
-<div>
-  <label for="role">Who do you want to talk to?</label><br>
+<p style="text-align:center;">Choose who you want advice from:</p>
+<div style="text-align:center;">
   <select id="role">
     <option value="mom">Mom</option>
     <option value="dad">Dad</option>
@@ -103,7 +61,7 @@
 
 <div id="chatbox"></div>
 
-<input type="text" id="userInput" placeholder="Type something..." />
+<input type="text" id="userInput" placeholder="Ask something..." />
 <button onclick="sendMessage()">Send</button>
 
 <script>
@@ -111,20 +69,26 @@
 
   const responses = {
     mom: [
-      "I'm proud of you no matter what, sweetie.",
-      "Make sure you're eating and resting, okay?",
-      "It's okay to cry, baby. You're still strong.",
+      "How about taking a break and drinking some water? I'm proud of you.",
+      "You’ve been so strong lately — maybe let yourself rest today.",
+      "Instead of overthinking, how about journaling it out? You might feel lighter.",
+      "You don’t need to do everything perfectly. Just showing up is enough, baby.",
+      "What if you gave yourself permission to not have all the answers today?",
     ],
     dad: [
-      "You've got this. I believe in you.",
-      "Tough times don't last, but tough people do.",
-      "You don’t have to fix everything alone — I’m here.",
+      "You’ve got potential. Instead of doubting it, how about proving it to yourself?",
+      "Try this — one small task at a time. You’ll build momentum.",
+      "You can't control everything, but you can control your attitude.",
+      "How about using the stress as fuel? You’ve handled worse.",
+      "Instead of worrying, prep. Instead of prepping, execute. I'm with you.",
     ],
     sister: [
-      "Ugh, I get it. Want me to fight your problems? 💅",
-      "Don’t let today win. You’re stronger than this.",
-      "You always show up even when you’re tired — that’s powerful.",
-    ],
+      "Okay but… have you tried not stressing and letting people think what they want? 💅",
+      "How about you stop shrinking yourself for people who don’t clap when you win?",
+      "Sis, if it’s not feeding your soul or your peace — drop it.",
+      "You don’t owe anyone an explanation for growing.",
+      "Real talk: you're not too much, they're just not enough. 😉",
+    ]
   };
 
   function sendMessage() {
@@ -135,9 +99,9 @@
     if (!message) return;
 
     // Show user message
-    chatbox.innerHTML += `<div class='user'><strong>You:</strong> ${message}</div>`;
+    chatbox.innerHTML += `<div class='user'>You: ${message}</div>`;
 
-    // Simulate a response
+    // Simulate a more thoughtful response
     const r = responses[selected];
     const reply = r[Math.floor(Math.random() * r.length)];
     chatbox.innerHTML += `<div class='response'><strong>${capitalize(selected)}:</strong> ${reply}</div>`;
