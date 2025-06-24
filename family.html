@@ -53,3 +53,103 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Talk to Someone Who Cares</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    #chatbox {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      height: 400px;
+      overflow-y: scroll;
+      margin-bottom: 10px;
+    }
+    .user {
+      color: #0000cc;
+    }
+    .response {
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+    select, input, button {
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🫂 Family Support Chat</h1>
+
+<div>
+  <label for="role">Who do you want to talk to?</label><br>
+  <select id="role">
+    <option value="mom">Mom</option>
+    <option value="dad">Dad</option>
+    <option value="sister">Sister</option>
+  </select>
+</div>
+
+<div id="chatbox"></div>
+
+<input type="text" id="userInput" placeholder="Type something..." />
+<button onclick="sendMessage()">Send</button>
+
+<script>
+  const chatbox = document.getElementById("chatbox");
+
+  const responses = {
+    mom: [
+      "I'm proud of you no matter what, sweetie.",
+      "Make sure you're eating and resting, okay?",
+      "It's okay to cry, baby. You're still strong.",
+    ],
+    dad: [
+      "You've got this. I believe in you.",
+      "Tough times don't last, but tough people do.",
+      "You don’t have to fix everything alone — I’m here.",
+    ],
+    sister: [
+      "Ugh, I get it. Want me to fight your problems? 💅",
+      "Don’t let today win. You’re stronger than this.",
+      "You always show up even when you’re tired — that’s powerful.",
+    ],
+  };
+
+  function sendMessage() {
+    const input = document.getElementById("userInput");
+    const message = input.value.trim();
+    const selected = document.getElementById("role").value;
+
+    if (!message) return;
+
+    // Show user message
+    chatbox.innerHTML += `<div class='user'><strong>You:</strong> ${message}</div>`;
+
+    // Simulate a response
+    const r = responses[selected];
+    const reply = r[Math.floor(Math.random() * r.length)];
+    chatbox.innerHTML += `<div class='response'><strong>${capitalize(selected)}:</strong> ${reply}</div>`;
+
+    input.value = "";
+    chatbox.scrollTop = chatbox.scrollHeight;
+  }
+
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+</script>
+
+</body>
+</html>
