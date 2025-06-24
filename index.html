@@ -1,32 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Comfort Circle</title>
+  <title>Build Your Comfort Circle</title>
   <style>
-    body { font-family: Arial, background: #fff0f5; text-align: center; padding: 40px; }
-    h1 { color: #cc2e5d; }
-    .profile-link {
-      display: block;
-      margin: 15px;
-      padding: 15px;
-      background: #ffe6f0;
-      border: 2px solid #ff8bb1;
-      border-radius: 12px;
-      text-decoration: none;
-      color: #7a3e66;
-      font-size: 20px;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff0f5;
+      padding: 20px;
+      color: #333;
+      text-align: center;
+    }
+    h1 {
+      color: #cc007a;
+    }
+    .profile-list {
+      margin-top: 30px;
+    }
+    .profile {
+      background: #ffd6e7;
+      border: 2px solid #ff80bf;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 10px auto;
       max-width: 300px;
-      margin-left: auto;
-      margin-right: auto;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 5px;
     }
   </style>
 </head>
 <body>
+  <h1>💞 Build Your Comfort Circle</h1>
+  <p>Add people who comfort you (real or imagined) and create your safe chat space 💬💗</p>
 
-  <h1>💞 Welcome to Your Comfort Circle</h1>
-  <p>Select someone to visit their page and get the kind of love/support you need:</p>
+  <div>
+    <input type="text" id="nameInput" placeholder="Name (e.g. Mom, Bestie)" />
+    <input type="text" id="emojiInput" placeholder="Emoji (e.g. 👩, 🐻)" />
+    <button onclick="addProfile()">Add</button>
+  </div>
 
-  <a clas
-<a class="profile-link" href="dad.html">👨 Dad</a>
-<a class="profile-link" href="sister.html">👧 Sister</a>
+  <div class="profile-list" id="profileList"></div>
+
+  <script>
+    function addProfile() {
+      const name = document.getElementById('nameInput').value.trim();
+      const emoji = document.getElementById('emojiInput').value.trim();
+      if (!name || !emoji) return alert('Enter both name and emoji!');
+
+      const list = document.getElementById('profileList');
+      const newProfile = document.createElement('div');
+      newProfile.className = 'profile';
+      newProfile.innerHTML = `<strong>${emoji} ${name}</strong><br/><small>Chat not yet active</small>`;
+      list.appendChild(newProfile);
+
+      document.getElementById('nameInput').value = '';
+      document.getElementById('emojiInput').value = '';
+    }
+  </script>
+</body>
+</html>
+
 

@@ -1,0 +1,27 @@
+<script>
+  // 💬 List of comforting messages
+  const advice = [
+    "You're doing better than you think 💪",
+    "Take a deep breath, you've got this 🌸",
+    "I'm proud of how far you've come ❤️",
+    "One step at a time 🧘‍♀️",
+    "You are loved and needed 🫂",
+    "You’re not alone, I’m right here 🤗"
+  ];
+
+  function addProfile() {
+    const name = document.getElementById('nameInput').value.trim();
+    const emoji = document.getElementById('emojiInput').value.trim();
+    if (!name || !emoji) return alert('Enter both name and emoji!');
+
+    const list = document.getElementById('profileList');
+    const newProfile = document.createElement('div');
+    newProfile.className = 'profile';
+
+    // 🎯 Pick a random comforting message
+    const message = advice[Math.floor(Math.random() * advice.length)];
+
+    newProfile.innerHTML = `<strong>${emoji} ${name}</strong><br/><small>${message}</small>`;
+    list.appendChild(newProfile);
+
+    docum
